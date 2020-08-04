@@ -160,13 +160,14 @@
 		var items;
 		self.model.read(function(data) {
 			items = data;
+			console.log("Element with ID: " + id + " has been removed.");
 		});
 
-		items.forEach(function(item) {
+		/*items.forEach(function(item) {
 			if (item.id === id) {
 				console.log("Element with ID: " + id + " has been removed.");
 			}
-		});
+		});*/
 
 		self.model.remove(id, function () {
 			self.view.render('removeItem', id);
