@@ -60,6 +60,12 @@ describe('controller', function () {
 
 	it('should show entries on start-up', function () {
 		// TODO: write test
+		// Devrait afficher les entrées au démarrage
+		setUpModel([]); // configure le modèle TODOS
+
+		subject.setView(''); // change la vue
+		//On s'assure que Render appelle la méthode showEntries, avec le modèle Todo qui est vide
+		expect(view.render).toHaveBeenCalledWith('showEntries', []);
 	});
 
 	describe('routing', function () {
@@ -84,10 +90,25 @@ describe('controller', function () {
 
 		it('should show active entries', function () {
 			// TODO: write test
+			// Devrait afficher les entrées actives
+			const todo = [{title: 'my todo', completed: false, id: 1}, {title: 'my todo', completed: false, id: 2}];
+			setUpModel(todo); // configure le modèle TODOS
+			subject.setView('#/active'); // change la vue, sur Active
+			//On s'assure que Render appelle la méthode showEntries, avec notre constante todo
+			expect(view.render).toHaveBeenCalledWith('showEntries', todo);
 		});
 
 		it('should show completed entries', function () {
 			// TODO: write test
+			// Devrait afficher les entrées terminées
+			const todo = [{title: 'my todo', completed: true, id: 3}];
+
+			setUpModel(todo); // configure le modèle TODO
+
+			subject.setView('#/completed'); // change la vue, sur completed
+
+			//On s'assure que Render appelle la méthode showEntries, avec notre constante todo
+			expect(view.render).toHaveBeenCalledWith('showEntries', todo);
 		});
 	});
 
@@ -135,25 +156,70 @@ describe('controller', function () {
 
 	it('should highlight "All" filter by default', function () {
 		// TODO: write test
+		// Devrait afficher les filtres par défaut
+
+		const todo = [{title: 'my todo'}, {title: 'my test'}];
+
+		setUpModel(todo); // configure le modèle TODOS
+
+		subject.setView('#/');
+
+		expect(view.render).toHaveBeenCalledWith('setFilter', '');
 	});
 
 	it('should highlight "Active" filter when switching to active view', function () {
 		// TODO: write test
+		// Devrait mettre en évidence le filtre «Actif» lors du passage à la vue "All"
+
+		const todo = [{title: 'my todo'}, {title: 'my test'}];
+
+		setUpModel(todo);
+
+		subject.setView('#/active');
+
+		expect(view.render).toHaveBeenCalledWith('setFilter', 'active');
 	});
 
 	describe('toggle all', function () {
 		it('should toggle all todos to completed', function () {
 			// TODO: write test
+			// Devrait basculer toutes les tâches à terminer
+			const todo = [
+				{title: 'my todo', completed: false, id: 1},
+				{title: 'my test', completed: false, id: 2},
+				{title: 'my todos', completed: false, id: 3},
+				{title: 'my tests', completed: false, id: 4}];
+
+			setUpModel(todo);
+
+			subject.setView('');
+			view.trigger('toggleAll', {completed: true});
+
+			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 1, completed: true});
+			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 2, completed: true});
+			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 3, completed: true});
+			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 4, completed: true});
 		});
 
 		it('should update the view', function () {
 			// TODO: write test
+			// Devrait mettre à jour la vue
 		});
 	});
 
 	describe('new todo', function () {
 		it('should add a new todo to the model', function () {
 			// TODO: write test
+			// Devrait ajouter un nouveau Todo au modèle
+
+			/*setUpModel();
+
+			subject.setView('');*/
+
+			//expect(view.render).toHaveBeenCalledWith('setFilter', filterAct);*/
+
+
+
 		});
 
 		it('should add a new todo to the view', function () {

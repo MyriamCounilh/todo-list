@@ -24,6 +24,7 @@
 			: string;
 	};
 
+
 	/**
 	 * Sets up defaults for all the Template methods such as a default template
 	 *
@@ -31,14 +32,15 @@
 	 */
 	function Template() {
 		this.defaultTemplate
-		=	'<li data-id="{{id}}" class="{{completed}}">'
-		+		'<div class="view">'
-		+			'<input class="toggle" type="checkbox" {{checked}}>'
-		+			'<label>{{title}}</label>'
-		+			'<button class="destroy"></button>'
-		+		'</div>'
-		+	'</li>';
+		=	`<li data-id="{{id}}" class="{{completed}}">
+				<div class="view">
+					<input class="toggle" type="checkbox" {{checked}}>
+					<label>{{title}}</label>
+					<button class="destroy"></button>
+				</div>
+			</li>`;
 	}
+
 
 	/**
 	 * Creates an <li> HTML string and returns it for placement in your app.
