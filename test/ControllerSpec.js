@@ -186,12 +186,25 @@ describe('controller', function () {
 			// Devrait basculer toutes les tâches à terminer
 			const todo = [
 				{title: 'my todo', completed: false, id: 1},
-				{title: 'my test', completed: false, id: 2},
-				{title: 'my todos', completed: false, id: 3},
-				{title: 'my tests', completed: false, id: 4}];
+				{title: 'my test', completed: false, id: 2}];
 
 			setUpModel(todo);
 
+			subject.setView('');
+			view.trigger('toggleAll', {id: 1, completed: true}, {id: 2, completed: true});
+
+			expect(model.update).toHaveBeenCalledWith(1, {completed: true},jasmine.any(Function));
+			expect(model.update).toHaveBeenCalledWith(2, {completed: true},jasmine.any(Function));
+		});
+
+		it('should update the view', function () {
+			// TODO: write test
+			// Devrait mettre à jour la vue
+			const todo = [{title: 'my todo', completed: false, id: 1},
+				{title: 'my test', completed: false, id: 2},
+				{title: 'my todos', completed: false, id: 3},
+				{title: 'my tests', completed: false, id: 4}];
+			setUpModel(todo);
 			subject.setView('');
 			view.trigger('toggleAll', {completed: true});
 
@@ -200,26 +213,19 @@ describe('controller', function () {
 			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 3, completed: true});
 			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 4, completed: true});
 		});
-
-		it('should update the view', function () {
-			// TODO: write test
-			// Devrait mettre à jour la vue
-		});
 	});
 
 	describe('new todo', function () {
 		it('should add a new todo to the model', function () {
 			// TODO: write test
 			// Devrait ajouter un nouveau Todo au modèle
+			setUpModel([]); // Je configure mon modèle Todos
 
-			/*setUpModel();
+			subject.setView(''); // Je change ma vue
 
-			subject.setView('');*/
+			view.trigger('newTodo', 'a new todo');
 
-			//expect(view.render).toHaveBeenCalledWith('setFilter', filterAct);*/
-
-
-
+			expect(model.create).toHaveBeenCalledWith('a new todo', jasmine.any(Function));
 		});
 
 		it('should add a new todo to the view', function () {
@@ -260,6 +266,16 @@ describe('controller', function () {
 	describe('element removal', function () {
 		it('should remove an entry from the model', function () {
 			// TODO: write test
+			// Devrait supprimer une entrée du modèle
+			const todo = [
+				{title: 'my todo', completed: false, id: 1},
+				{title: 'my test', completed: false, id: 2},
+				{title: 'my todos', completed: false, id: 3},
+				{title: 'my tests', completed: false, id: 4}];
+			setUpModel(todo); // Je configure mon modèle Todos
+			subject.setView(''); // Je change ma vue
+			view.trigger('itemRemove', {id: 1});
+			expect(model.remove).toHaveBeenCalledWith( 1, jasmine.any(Function));
 		});
 
 		it('should remove an entry from the view', function () {

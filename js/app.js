@@ -3,9 +3,9 @@
 	'use strict';
 
 	/**
-	 * Sets up a brand new Todo list.
-	 *
-	 * @param {string} name The name of your new to do list.
+	 * @description Sets up a brand new Todo list.
+	 * @param name {string} name The name of your new to do list
+	 * @constructor
 	 */
 	function Todo(name) {
 		this.storage = new app.Store(name);
@@ -17,6 +17,9 @@
 
 	var todo = new Todo('todos-vanillajs');
 
+	/**
+	 * @description
+	 */
 	function setView() {
 		todo.controller.setView(document.location.hash);
 	}

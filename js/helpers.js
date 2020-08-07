@@ -15,8 +15,15 @@
 		target.addEventListener(type, callback, !!useCapture);
 	};
 
-	// Attach a handler to event for all elements that match the selector,
-	// now or in the future, based on a root element
+		/**
+	 * @description Attach a handler to event for all elements that match the selector,
+	 * now or in the future, based on a root element
+	 *
+	 * @param target
+	 * @param selector
+	 * @param type
+	 * @param handler
+	 */
 	window.$delegate = function (target, selector, type, handler) {
 		function dispatchEvent(event) {
 			var targetElement = event.target;
@@ -34,8 +41,13 @@
 		window.$on(target, type, dispatchEvent, useCapture);
 	};
 
-	// Find the element's parent with the given tag name:
-	// $parent(qs('a'), 'div');
+	/**
+	 * @description Find the element's parent with the given tag name:
+	 * $parent(qs('a'), 'div');
+	 * @param element
+	 * @param tagName
+	 * @return {(() => (Node | null))|ActiveX.IXMLDOMNode|(Node & ParentNode)|undefined}
+	 */
 	window.$parent = function (element, tagName) {
 		if (!element.parentNode) {
 			return;
@@ -46,7 +58,9 @@
 		return window.$parent(element.parentNode, tagName);
 	};
 
-	// Allow for looping on nodes by chaining:
-	// qsa('.foo').forEach(function () {})
+	/**
+	 * @description Allow for looping on nodes by chaining:
+	 * @type {(callbackfn: (value: unknown, index: number, array: unknown[]) => void, thisArg?: any) => void}
+	 */
 	NodeList.prototype.forEach = Array.prototype.forEach;
 })(window);

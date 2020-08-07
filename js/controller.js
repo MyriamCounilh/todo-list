@@ -2,11 +2,10 @@
 	'use strict';
 
 	/**
-	 * Takes a model and view and acts as the controller between them
-	 *
+	 * @description Takes a model and view and acts as the controller between them
+	 * @param model {object} model The model instance
+	 * @param view {object} view The view instance
 	 * @constructor
-	 * @param {object} model The model instance
-	 * @param {object} view The view instance
 	 */
 	function Controller(model, view) {
 		var self = this;
@@ -47,9 +46,8 @@
 	}
 
 	/**
-	 * Loads and initialises the view
-	 *
-	 * @param {string} '' | 'active' | 'completed'
+	 * @description Loads and initialises the view
+	 * @param locationHash {string} '' | 'active' | 'completed'
 	 */
 	Controller.prototype.setView = function (locationHash) {
 		var route = locationHash.split('/')[1];
@@ -58,8 +56,8 @@
 	};
 
 	/**
-	 * An event to fire on load. Will get all items and display them in the
-	 * todo-list
+	 * @description An event to fire on load. Will get all items and display them in the
+	 * @param todo-list
 	 */
 	Controller.prototype.showAll = function () {
 		var self = this;
@@ -69,7 +67,8 @@
 	};
 
 	/**
-	 * Renders all active tasks
+	 * @description Renders all active tasks
+	 * @param
 	 */
 	Controller.prototype.showActive = function () {
 		var self = this;
@@ -79,7 +78,8 @@
 	};
 
 	/**
-	 * Renders all completed tasks
+	 * @description Renders all completed tasks
+	 * @param
 	 */
 	Controller.prototype.showCompleted = function () {
 		var self = this;
@@ -89,8 +89,10 @@
 	};
 
 	/**
-	 * An event to fire whenever you want to add an item. Simply pass in the event
+	 * @description An event to fire whenever you want to add an item. Simply pass in the event
 	 * object and it'll handle the DOM insertion and saving of the new item.
+	 * @param title
+	 * @return
 	 */
 	Controller.prototype.addItem = function (title) {
 		var self = this;
@@ -105,8 +107,9 @@
 		});
 	};
 
-	/*
-	 * Triggers the item editing mode.
+	/**
+	 * @description Triggers the item editing mode.
+	 * @param id
 	 */
 	Controller.prototype.editItem = function (id) {
 		var self = this;
@@ -115,8 +118,10 @@
 		});
 	};
 
-	/*
-	 * Finishes the item editing mode successfully.
+	/**
+	 * @description Finishes the item editing mode successfully.
+	 * @param id
+	 * @param title
 	 */
 	Controller.prototype.editItemSave = function (id, title) {
 		var self = this;
@@ -138,8 +143,9 @@
 		}
 	};
 
-	/*
-	 * Cancels the item editing mode.
+	/**
+	 * @description Cancels the item editing mode.
+	 * @param id
 	 */
 	Controller.prototype.editItemCancel = function (id) {
 		var self = this;
@@ -149,10 +155,10 @@
 	};
 
 	/**
-	 * By giving it an ID it'll find the DOM element matching that ID,
+	 * @description By giving it an ID it'll find the DOM element matching that ID,
 	 * remove it from the DOM and also remove it from storage.
 	 *
-	 * @param {number} id The ID of the item to remove from the DOM and
+	 * @param id {number} id The ID of the item to remove from the DOM and
 	 * storage
 	 */
 	Controller.prototype.removeItem = function (id) {
@@ -171,7 +177,7 @@
 	};
 
 	/**
-	 * Will remove all completed items from the DOM and storage.
+	 * @description Will remove all completed items from the DOM and storage.
 	 */
 	Controller.prototype.removeCompletedItems = function () {
 		var self = this;
@@ -185,13 +191,13 @@
 	};
 
 	/**
-	 * Give it an ID of a model and a checkbox and it will update the item
+	 * @description Give it an ID of a model and a checkbox and it will update the item
 	 * in storage based on the checkbox's state.
 	 *
-	 * @param {number} id The ID of the element to complete or uncomplete
-	 * @param {object} checkbox The checkbox to check the state of complete
-	 *                          or not
-	 * @param {boolean|undefined} silent Prevent re-filtering the todo items
+	 * @param id {number} id The ID of the element to complete or uncomplete
+	 * @param completed {object} checkbox The checkbox to check the state of complete
+	 * or not
+	 * @param silent {boolean|undefined} silent Prevent re-filtering the todo items
 	 */
 	Controller.prototype.toggleComplete = function (id, completed, silent) {
 		var self = this;
@@ -208,8 +214,9 @@
 	};
 
 	/**
-	 * Will toggle ALL checkboxes' on/off state and completeness of models.
+	 * @description Will toggle ALL checkboxes' on/off state and completeness of models.
 	 * Just pass in the event object.
+	 * @param completed
 	 */
 	Controller.prototype.toggleAll = function (completed) {
 		var self = this;
@@ -223,8 +230,10 @@
 	};
 
 	/**
-	 * Updates the pieces of the page which change depending on the remaining
+	 * @description Updates the pieces of the page which change depending on the remaining
 	 * number of todos.
+	 * @param
+	 * @private
 	 */
 	Controller.prototype._updateCount = function () {
 		var self = this;
@@ -241,8 +250,10 @@
 	};
 
 	/**
-	 * Re-filters the todo items, based on the active route.
-	 * @param {boolean|undefined} force  forces a re-painting of todo items.
+	 * @description Re-filters the todo items, based on the active route.
+	 *
+	 * @param force {boolean|undefined} forces a re-painting of todo items.
+	 * @private
 	 */
 	Controller.prototype._filter = function (force) {
 		var activeRoute = this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);
@@ -250,9 +261,11 @@
 		// Update the elements on the page, which change with each completed todo
 		this._updateCount();
 
-		// If the last active route isn't "All", or we're switching routes, we
-		// re-create the todo item elements, calling:
-		//   this.show[All|Active|Completed]();
+		/**
+		 * If the last active route isn't "All", or we're switching routes, we
+		 * re-create the todo item elements, calling:
+		 * this.show[All|Active|Completed]();
+		 */
 		if (force || this._lastActiveRoute !== 'All' || this._lastActiveRoute !== activeRoute) {
 			this['show' + activeRoute]();
 		}
@@ -261,7 +274,10 @@
 	};
 
 	/**
-	 * Simply updates the filter nav's selected states
+	 * @description Simply updates the filter nav's selected states
+	 *
+	 * @param currentPage
+	 * @private
 	 */
 	Controller.prototype._updateFilterState = function (currentPage) {
 		// Store a reference to the active route, allowing us to re-filter todo
