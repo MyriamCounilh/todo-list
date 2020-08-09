@@ -94,8 +94,9 @@ describe('controller', function () {
 			const todo = [{title: 'my todo', completed: false, id: 1}, {title: 'my todo', completed: false, id: 2}];
 			setUpModel(todo); // configure le modèle TODOS
 			subject.setView('#/active'); // change la vue, sur Active
-			//On s'assure que Render appelle la méthode showEntries, avec notre constante todo
+			//On s'assure que Render appelle la méthode showEntries, avec notre modèle todo
 			expect(view.render).toHaveBeenCalledWith('showEntries', todo);
+			console.log(todo);
 		});
 
 		it('should show completed entries', function () {
@@ -107,7 +108,7 @@ describe('controller', function () {
 
 			subject.setView('#/completed'); // change la vue, sur completed
 
-			//On s'assure que Render appelle la méthode showEntries, avec notre constante todo
+			//On s'assure que Render appelle la méthode showEntries, avec notre modèle todo
 			expect(view.render).toHaveBeenCalledWith('showEntries', todo);
 		});
 	});
@@ -191,7 +192,7 @@ describe('controller', function () {
 			setUpModel(todo);
 
 			subject.setView('');
-			view.trigger('toggleAll', {id: 1, completed: true}, {id: 2, completed: true});
+			view.trigger('toggleAll', {completed: true});
 
 			expect(model.update).toHaveBeenCalledWith(1, {completed: true},jasmine.any(Function));
 			expect(model.update).toHaveBeenCalledWith(2, {completed: true},jasmine.any(Function));
