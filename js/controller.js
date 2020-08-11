@@ -1,11 +1,16 @@
+/**
+ * @class Controller
+ */
 (function (window) {
 	'use strict';
 
 	/**
 	 * @description Takes a model and view and acts as the controller between them
-	 * @param model {object} model The model instance
-	 * @param view {object} view The view instance
+	 * @param {object} model - The model instance
+	 * @param {object} view -  The view instance
 	 * @constructor
+	 * @name Controller
+	 * @return {void}
 	 */
 	function Controller(model, view) {
 		var self = this;
@@ -47,7 +52,9 @@
 
 	/**
 	 * @description Loads and initialises the view
+	 * @method Controller.setView
 	 * @param locationHash {string} '' | 'active' | 'completed'
+	 * @return {void}
 	 */
 	Controller.prototype.setView = function (locationHash) {
 		var route = locationHash.split('/')[1];
@@ -56,8 +63,9 @@
 	};
 
 	/**
-	 * @description An event to fire on load. Will get all items and display them in the
-	 * @param todo-list
+	 * @description An event to fire on load. Will get all items and display them in the todo-list
+	 * @method Controller.showAll
+	 * @return {void}
 	 */
 	Controller.prototype.showAll = function () {
 		var self = this;
@@ -68,7 +76,8 @@
 
 	/**
 	 * @description Renders all active tasks
-	 * @param
+	 * @method Controller.showActive
+	 * @return {void}
 	 */
 	Controller.prototype.showActive = function () {
 		var self = this;
@@ -79,7 +88,8 @@
 
 	/**
 	 * @description Renders all completed tasks
-	 * @param
+	 * @method Controller.showCompleted
+	 * @return {void}
 	 */
 	Controller.prototype.showCompleted = function () {
 		var self = this;
@@ -91,8 +101,9 @@
 	/**
 	 * @description An event to fire whenever you want to add an item. Simply pass in the event
 	 * object and it'll handle the DOM insertion and saving of the new item.
-	 * @param title
-	 * @return
+	 * @method Controller.addItem
+	 * @param {string} title - title of the item
+	 * @return {void}
 	 */
 	Controller.prototype.addItem = function (title) {
 		var self = this;
@@ -109,7 +120,9 @@
 
 	/**
 	 * @description Triggers the item editing mode.
-	 * @param id
+	 * @method Controller.editItem
+	 * @param {number} id - id of the todo
+	 * @return {void}
 	 */
 	Controller.prototype.editItem = function (id) {
 		var self = this;
@@ -120,8 +133,10 @@
 
 	/**
 	 * @description Finishes the item editing mode successfully.
-	 * @param id
-	 * @param title
+	 * @method Controller.editItemSave
+	 * @param {number} id - id of the todo
+	 * @param {string} title - title of the item
+	 * @return {void}
 	 */
 	Controller.prototype.editItemSave = function (id, title) {
 		var self = this;
@@ -145,7 +160,9 @@
 
 	/**
 	 * @description Cancels the item editing mode.
-	 * @param id
+	 * @method Controller.editItemCancel
+	 * @param {number} id - id of the todo
+	 * @return {void}
 	 */
 	Controller.prototype.editItemCancel = function (id) {
 		var self = this;
@@ -157,9 +174,9 @@
 	/**
 	 * @description By giving it an ID it'll find the DOM element matching that ID,
 	 * remove it from the DOM and also remove it from storage.
-	 *
-	 * @param id {number} id The ID of the item to remove from the DOM and
-	 * storage
+	 * @method Controller.removeItem
+	 * @param id {number} id The ID of the item to remove from the DOM and storage
+	 * @return {void}
 	 */
 	Controller.prototype.removeItem = function (id) {
 		var self = this;
@@ -178,6 +195,8 @@
 
 	/**
 	 * @description Will remove all completed items from the DOM and storage.
+	 * @method Controller.removeCompletedItems
+	 * @return {void}
 	 */
 	Controller.prototype.removeCompletedItems = function () {
 		var self = this;
@@ -193,11 +212,11 @@
 	/**
 	 * @description Give it an ID of a model and a checkbox and it will update the item
 	 * in storage based on the checkbox's state.
-	 *
-	 * @param id {number} id The ID of the element to complete or uncomplete
-	 * @param completed {object} checkbox The checkbox to check the state of complete
-	 * or not
-	 * @param silent {boolean|undefined} silent Prevent re-filtering the todo items
+	 * @method Controller.toggleComplete
+	 * @param {number} id - the ID of the element to complete or uncomplete
+	 * @param {object} completed - checkbox The checkbox to check the state of complete or not
+	 * @param {boolean|undefined} silent - silent Prevent re-filtering the todo items
+	 * @return {void}
 	 */
 	Controller.prototype.toggleComplete = function (id, completed, silent) {
 		var self = this;
@@ -216,7 +235,9 @@
 	/**
 	 * @description Will toggle ALL checkboxes' on/off state and completeness of models.
 	 * Just pass in the event object.
-	 * @param completed
+	 * @method Controller.toggleAll
+	 * @param {object} completed - checkbox The checkbox to check the state of complete or not
+	 * @return {void}
 	 */
 	Controller.prototype.toggleAll = function (completed) {
 		var self = this;
@@ -230,10 +251,10 @@
 	};
 
 	/**
-	 * @description Updates the pieces of the page which change depending on the remaining
-	 * number of todos.
-	 * @param
+	 * @description Updates the pieces of the page which change depending on the remaining number of todos.
+	 * @method Controller._updateCount
 	 * @private
+	 * @return {void}
 	 */
 	Controller.prototype._updateCount = function () {
 		var self = this;
@@ -251,9 +272,10 @@
 
 	/**
 	 * @description Re-filters the todo items, based on the active route.
-	 *
-	 * @param force {boolean|undefined} forces a re-painting of todo items.
+	 * @method Controller._filter
+	 * @param {boolean|undefined} force - forces a re-painting of todo items.
 	 * @private
+	 * @return {void}
 	 */
 	Controller.prototype._filter = function (force) {
 		var activeRoute = this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);
@@ -275,9 +297,10 @@
 
 	/**
 	 * @description Simply updates the filter nav's selected states
-	 *
-	 * @param currentPage
+	 * @method Controller._updateFilterState
+	 * @param {string} currentPage - name of the active route, allowing us to re-filter todo
 	 * @private
+	 * @return {void}
 	 */
 	Controller.prototype._updateFilterState = function (currentPage) {
 		// Store a reference to the active route, allowing us to re-filter todo

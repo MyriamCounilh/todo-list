@@ -61,11 +61,12 @@ describe('controller', function () {
 	it('should show entries on start-up', function () {
 		// TODO: write test
 		// Devrait afficher les entrées au démarrage
-		setUpModel([]); // configure le modèle TODOS
+		const todo = [{title: 'my todo', completed: false, id: 1}, {title: 'my todo', completed: false, id: 2}];
+		setUpModel(todo); // configure le modèle TODOS
 
 		subject.setView(''); // change la vue
 		//On s'assure que Render appelle la méthode showEntries, avec le modèle Todo qui est vide
-		expect(view.render).toHaveBeenCalledWith('showEntries', []);
+		expect(view.render).toHaveBeenCalledWith('showEntries', todo);
 	});
 
 	describe('routing', function () {
@@ -96,7 +97,7 @@ describe('controller', function () {
 			subject.setView('#/active'); // change la vue, sur Active
 			//On s'assure que Render appelle la méthode showEntries, avec notre modèle todo
 			expect(view.render).toHaveBeenCalledWith('showEntries', todo);
-			console.log(todo);
+
 		});
 
 		it('should show completed entries', function () {
@@ -170,7 +171,7 @@ describe('controller', function () {
 
 	it('should highlight "Active" filter when switching to active view', function () {
 		// TODO: write test
-		// Devrait mettre en évidence le filtre «Actif» lors du passage à la vue "All"
+		// Devrait mettre en évidence le filtre «Actif» lors du passage à la vue active
 
 		const todo = [{title: 'my todo'}, {title: 'my test'}];
 

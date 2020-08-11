@@ -1,11 +1,15 @@
 /*global app, $on */
+/**
+ * @class Todo
+ */
 (function () {
 	'use strict';
 
 	/**
 	 * @description Sets up a brand new Todo list.
-	 * @param name {string} name The name of your new to do list
 	 * @constructor
+	 * @param {string} name The name of your new to do list
+	 * @return {void}
 	 */
 	function Todo(name) {
 		this.storage = new app.Store(name);
@@ -18,7 +22,9 @@
 	var todo = new Todo('todos-vanillajs');
 
 	/**
-	 * @description
+	 * @description set view available
+	 * @method Todo.setView
+	 * @return {void}
 	 */
 	function setView() {
 		todo.controller.setView(document.location.hash);

@@ -1,14 +1,19 @@
 /*jshint eqeqeq:false */
+/**
+ * @class Store
+ */
 (function (window) {
 	'use strict';
 
 	/**
-	 * Creates a new client side storage object and will create an empty
+	 * @description Creates a new client side storage object and will create an empty
 	 * collection if no collection already exists.
 	 *
-	 * @param {string} name The name of our DB we want to use
-	 * @param {function} callback Our fake DB uses callbacks because in
-	 * real life you probably would be making AJAX calls
+	 * @name Store
+	 * @param {string} name - The name of our DB we want to use
+	 * @param {function} callback - Our fake DB uses callbacks because in real life you probably would be making AJAX calls
+	 * @constructor
+	 * @return {void}
 	 */
 	function Store(name, callback) {
 		callback = callback || function () {};
@@ -27,17 +32,17 @@
 	}
 
 	/**
-	 * Finds items based on a query given as a JS object
-	 *
-	 * @param {object} query The query to match against (i.e. {foo: 'bar'})
-	 * @param {function} callback	 The callback to fire when the query has
-	 * completed running
-	 *
+	 * @description Finds items based on a query given as a JS object
+	 * @method Store.find
+	 * @param {object} query - The query to match against (i.e. {foo: 'bar'})
+	 * @param {function} callback - The callback to fire when the query has completed running
 	 * @example
 	 * db.find({foo: 'bar', hello: 'world'}, function (data) {
 	 *	 // data will return any items that have foo: bar and
 	 *	 // hello: world in their properties
 	 * });
+	 *
+	 * @return {boolean} return if items found
 	 */
 	Store.prototype.find = function (query, callback) {
 		if (!callback) {
@@ -57,9 +62,10 @@
 	};
 
 	/**
-	 * Will retrieve all data from the collection
-	 *
-	 * @param {function} callback The callback to fire upon retrieving data
+	 * @description Will retrieve all data from the collection
+	 * @method Store.findAll
+	 * @param {function} callback - The callback to fire upon retrieving data
+	 * @return {void}
 	 */
 	Store.prototype.findAll = function (callback) {
 		callback = callback || function () {};
@@ -67,12 +73,14 @@
 	};
 
 	/**
-	 * Will save the given data to the DB. If no item exists it will create a new
+	 * @description save the given data to the DB. If no item exists it will create a new
 	 * item, otherwise it'll simply update an existing item's properties
 	 *
-	 * @param {object} updateData The data to save back into the DB
-	 * @param {function} callback The callback to fire after saving
-	 * @param {number} id An optional param to enter an ID of an item to update
+	 * @method Store.save
+	 * @param {object} updateData - The data to save back into the DB
+	 * @param {function} callback - The callback to fire after saving
+	 * @param {number} id - An optional param to enter an ID of an item to update
+	 * @return {void}
 	 */
 	Store.prototype.save = function (updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
@@ -101,10 +109,12 @@
 	};
 
 	/**
-	 * Will remove an item from the Store based on its ID
+	 * @description Will remove an item from the Store based on its ID
 	 *
-	 * @param {number} id The ID of the item you want to remove
-	 * @param {function} callback The callback to fire after saving
+	 * @method Store.remove
+	 * @param {number} id - the ID of the item you want to remove
+	 * @param {function} callback - the callback to fire after saving
+	 * @return {void}
 	 */
 	Store.prototype.remove = function (id, callback) {
 		var data = JSON.parse(localStorage[this._dbName]);
@@ -128,9 +138,10 @@
 	};
 
 	/**
-	 * Will drop all storage and start fresh
-	 *
-	 * @param {function} callback The callback to fire after dropping the data
+	 * @description drop all storage and start fresh
+	 * @method Store.drop
+	 * @param {function} callback - The callback to fire after dropping the data
+	 * @return {void}
 	 */
 	Store.prototype.drop = function (callback) {
 		var data = {todos: []};
