@@ -1,6 +1,6 @@
 /*global qs, qsa, $on, $parent, $delegate */
 /**
- * @class View
+ * @class
  */
 (function (window) {
 	'use strict';
@@ -34,8 +34,7 @@
 
 	/**
 	 * @description remove item with Id
-	 * @param {number} id
-	 * @private
+	 * @param {number} id - id of the item
 	 * @method View._removeItem
 	 * @return {void}
 	 */
@@ -48,11 +47,10 @@
 	};
 
 	/**
-	 * @description clear Completed - updtade de display
+	 * @description clear Completed - update de display
 	 * @param {number} completedCount - number of todo as completed
 	 * @param {boolean} true is visible - false is not visible
 	 * @method View._clearCompletedButton
-	 * @private
 	 * @return {void}
 	 */
 	View.prototype._clearCompletedButton = function (completedCount, visible) {
@@ -63,7 +61,6 @@
 	/**
 	 * @description indicated current page
 	 * @param {string} currentPage - name of the current page
-	 * @private
 	 * @method View._setFilter
 	 * @return {void}
 	 */
@@ -76,8 +73,7 @@
 	 * @description update the view of the Todo if has completed
 	 * @param {number} id - id of the todo
 	 * @param {boolean} completed - todo is completed ?
-	 * @private
-	 * @method View_elementComplete
+	 * @method View._elementComplete
 	 * @return {void}
 	 */
 	View.prototype._elementComplete = function (id, completed) {
@@ -98,7 +94,6 @@
 	 * @description change a todo in edit mode
 	 * @param {number} id - id of the todo
 	 * @param {string} title - title of the todo
-	 * @private
 	 * @method View._editItem
 	 * @return {void}
 	 */
@@ -123,7 +118,6 @@
 	 * @description change a todo in display mode
 	 * @param {number} id - id of the todo
 	 * @param {string} title - title of the todo
-	 * @private
 	 * @method View._editItemDone
 	 * @return {void}
 	 */
@@ -195,7 +189,6 @@
 	/**
 	 * @description find the id of the item
 	 * @param {object} element - Dom Element
-	 * @private
 	 * @method View._itemId
 	 * @return {number} Id of the item
 	 */
@@ -207,7 +200,6 @@
 	/**
 	 * @description manages the end of the edition
 	 * @param {function} handler - callback
-	 * @private
 	 * @method View._bindItemEditDone
 	 * @return {void}
 	 */
@@ -235,7 +227,6 @@
 	/**
 	 * @description manages the cancel of the edition
 	 * @param {function} handler - callback
-	 * @private
 	 * @method View._bindItemEditCancel
 	 * @return {void}
 	 */
@@ -255,7 +246,7 @@
 	 * @description dispatch the event
 	 * @param {string }event - name of the event
 	 * @param {function} handler - callback
-	 * @method View._bindItemEditCancel
+	 * @method View.bind
 	 * @return {void}
 	 */
 	View.prototype.bind = function (event, handler) {

@@ -1,5 +1,5 @@
 /**
- * @class Model
+ * @class
  */
 (function (window) {
 	'use strict';
@@ -17,8 +17,8 @@
 
 	/**
 	 * @description Creates a new todo model
-	 * @param {string} title - The title of the task
-	 * @param {function} callback - The callback to fire after the model is created
+	 * @param {string} [title] - The title of the task
+	 * @param {function} [callback] - The callback to fire after the model is created
 	 * @method Model.create
 	 * @return {void}
 	 */
@@ -46,8 +46,8 @@
 	 * model.read({ foo: 'bar', hello: 'world' });
 	 *
 	 * @method Model.read
-	 * @param {string|number|object} query - A query to match models against
-	 * @param {function} callback - The callback to fire after the model is found
+	 * @param {string|number|object} [query] - A query to match models against
+	 * @param {function} [callback] - The callback to fire after the model is found
 	 * @return {void}
 	 */
 	Model.prototype.read = function (query, callback) {
@@ -82,7 +82,7 @@
 	/**
 	 * @description Removes a model from storage
 	 *
-	 * @method Model.update
+	 * @method Model.remove
 	 * @param {number} id - The ID of the model to remove
 	 * @param {function} callback - The callback to fire when the removal is complete.
 	 * @return {void}

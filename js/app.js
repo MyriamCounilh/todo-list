@@ -1,13 +1,13 @@
 /*global app, $on */
 /**
- * @class Todo
+ * @class
  */
 (function () {
 	'use strict';
 
 	/**
 	 * @description Sets up a brand new Todo list.
-	 * @constructor
+	 * @constructor Todo
 	 * @param {string} name The name of your new to do list
 	 * @return {void}
 	 */

@@ -1,5 +1,5 @@
 /**
- * @class Controller
+ * @class
  */
 (function (window) {
 	'use strict';
@@ -121,7 +121,7 @@
 	/**
 	 * @description Triggers the item editing mode.
 	 * @method Controller.editItem
-	 * @param {number} id - id of the todo
+	 * @param {number} id - id of the item
 	 * @return {void}
 	 */
 	Controller.prototype.editItem = function (id) {
@@ -134,7 +134,7 @@
 	/**
 	 * @description Finishes the item editing mode successfully.
 	 * @method Controller.editItemSave
-	 * @param {number} id - id of the todo
+	 * @param {number} id - id of the item
 	 * @param {string} title - title of the item
 	 * @return {void}
 	 */
@@ -161,7 +161,7 @@
 	/**
 	 * @description Cancels the item editing mode.
 	 * @method Controller.editItemCancel
-	 * @param {number} id - id of the todo
+	 * @param {number} id - id of the item
 	 * @return {void}
 	 */
 	Controller.prototype.editItemCancel = function (id) {
@@ -253,7 +253,6 @@
 	/**
 	 * @description Updates the pieces of the page which change depending on the remaining number of todos.
 	 * @method Controller._updateCount
-	 * @private
 	 * @return {void}
 	 */
 	Controller.prototype._updateCount = function () {
@@ -274,7 +273,6 @@
 	 * @description Re-filters the todo items, based on the active route.
 	 * @method Controller._filter
 	 * @param {boolean|undefined} force - forces a re-painting of todo items.
-	 * @private
 	 * @return {void}
 	 */
 	Controller.prototype._filter = function (force) {
@@ -299,7 +297,6 @@
 	 * @description Simply updates the filter nav's selected states
 	 * @method Controller._updateFilterState
 	 * @param {string} currentPage - name of the active route, allowing us to re-filter todo
-	 * @private
 	 * @return {void}
 	 */
 	Controller.prototype._updateFilterState = function (currentPage) {

@@ -1,6 +1,6 @@
 /*jshint eqeqeq:false */
 /**
- * @class Store
+ * @class
  */
 (function (window) {
 	'use strict';

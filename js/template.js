@@ -1,6 +1,6 @@
 /*jshint laxbreak:true */
 /**
- * @class Template
+ * @class
  */
 (function (window) {
 	'use strict';
@@ -91,7 +91,7 @@
 	 * @description Displays a counter of how many to dos are left to complete
 	 * @method Template.itemCounter
 	 * @param {number} activeTodos - The number of active todos.
-	 * @returns {string} String containing the count
+	 * @return {string} String containing the count
 	 */
 	Template.prototype.itemCounter = function (activeTodos) {
 		var plural = activeTodos === 1 ? '' : 's';
@@ -102,8 +102,8 @@
 	/**
 	 * @description Updates the text within the "Clear completed" button
 	 * @method Template.clearCompletedButton
-	 * @param  {todo} completedTodos The number of completed todos.
-	 * @returns {string} text for the "Clear completed" button
+	 * @param  {number} completedTodos The number of completed todos.
+	 * @return {string} text for the "Clear completed" button
 	 */
 	Template.prototype.clearCompletedButton = function (completedTodos) {
 		if (completedTodos > 0) {

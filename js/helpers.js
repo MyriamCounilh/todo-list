@@ -69,7 +69,7 @@
 
 	/**
 	 * @description Find the element's parent with the given tag name: $parent(qs('a'), 'div');
-	 * @method window.$delegate
+	 * @method window.$parent
 	 * @param {object} DOM element
 	 * @param {string} tagName - Name of the label of the element on which it is called
 	 * @return {element} return a reference to the parent window or undefined.
