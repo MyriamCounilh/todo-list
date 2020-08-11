@@ -5,6 +5,7 @@
     "todomvc-common": "^1.0.1"
   },
   "devDependencies": {
+    "docdash": "^1.2.0",
     "jasmine-core": "^2.0.0"
   }
 }

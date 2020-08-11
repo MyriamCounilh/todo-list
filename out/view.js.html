@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
-    <title>JSDoc: Source: view.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <title>view.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
 
-<div id="main">
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-    <h1 class="page-title">Source: view.js</h1>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controller.html">Controller</a><ul class='methods'><li data-type='method'><a href="Controller.html#._filter">_filter</a></li><li data-type='method'><a href="Controller.html#._updateCount">_updateCount</a></li><li data-type='method'><a href="Controller.html#._updateFilterState">_updateFilterState</a></li><li data-type='method'><a href="Controller.html#.addItem">addItem</a></li><li data-type='method'><a href="Controller.html#.editItem">editItem</a></li><li data-type='method'><a href="Controller.html#.editItemCancel">editItemCancel</a></li><li data-type='method'><a href="Controller.html#.editItemSave">editItemSave</a></li><li data-type='method'><a href="Controller.html#.removeCompletedItems">removeCompletedItems</a></li><li data-type='method'><a href="Controller.html#.removeItem">removeItem</a></li><li data-type='method'><a href="Controller.html#.setView">setView</a></li><li data-type='method'><a href="Controller.html#.showActive">showActive</a></li><li data-type='method'><a href="Controller.html#.showAll">showAll</a></li><li data-type='method'><a href="Controller.html#.showCompleted">showCompleted</a></li><li data-type='method'><a href="Controller.html#.toggleAll">toggleAll</a></li><li data-type='method'><a href="Controller.html#.toggleComplete">toggleComplete</a></li></ul></li><li><a href="Model.html">Model</a><ul class='methods'><li data-type='method'><a href="Model.html#.create">create</a></li><li data-type='method'><a href="Model.html#.getCount">getCount</a></li><li data-type='method'><a href="Model.html#.read">read</a></li><li data-type='method'><a href="Model.html#.remove">remove</a></li><li data-type='method'><a href="Model.html#.removeAll">removeAll</a></li><li data-type='method'><a href="Model.html#.update">update</a></li></ul></li><li><a href="Store.html">Store</a><ul class='methods'><li data-type='method'><a href="Store.html#.drop">drop</a></li><li data-type='method'><a href="Store.html#.find">find</a></li><li data-type='method'><a href="Store.html#.findAll">findAll</a></li><li data-type='method'><a href="Store.html#.remove">remove</a></li><li data-type='method'><a href="Store.html#.save">save</a></li></ul></li><li><a href="Template.html">Template</a><ul class='methods'><li data-type='method'><a href="Template.html#.clearCompletedButton">clearCompletedButton</a></li><li data-type='method'><a href="Template.html#.itemCounter">itemCounter</a></li><li data-type='method'><a href="Template.html#.show">show</a></li></ul></li><li><a href="Todo.html">Todo</a><ul class='methods'><li data-type='method'><a href="Todo.html#.setView">setView</a></li></ul></li><li><a href="View.html">View</a><ul class='methods'><li data-type='method'><a href="View.html#._bindItemEditCancel">_bindItemEditCancel</a></li><li data-type='method'><a href="View.html#._bindItemEditDone">_bindItemEditDone</a></li><li data-type='method'><a href="View.html#._clearCompletedButton">_clearCompletedButton</a></li><li data-type='method'><a href="View.html#._editItem">_editItem</a></li><li data-type='method'><a href="View.html#._editItemDone">_editItemDone</a></li><li data-type='method'><a href="View.html#._elementComplete">_elementComplete</a></li><li data-type='method'><a href="View.html#._itemId">_itemId</a></li><li data-type='method'><a href="View.html#._removeItem">_removeItem</a></li><li data-type='method'><a href="View.html#._setFilter">_setFilter</a></li><li data-type='method'><a href="View.html#.bind">bind</a></li><li data-type='method'><a href="View.html#.render">render</a></li></ul></li><li><a href="window.html">window</a><ul class='methods'><li data-type='method'><a href="window.html#.$delegate">$delegate</a></li><li data-type='method'><a href="window.html#.$on">$on</a></li><li data-type='method'><a href="window.html#.$parent">$parent</a></li><li data-type='method'><a href="window.html#.qs">qs</a></li><li data-type='method'><a href="window.html#.qsa">qsa</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">view.js</h1>
+    
 
     
 
@@ -28,7 +44,7 @@
         <article>
             <pre class="prettyprint source linenums"><code>/*global qs, qsa, $on, $parent, $delegate */
 /**
- * @class View
+ * @class
  */
 (function (window) {
 	'use strict';
@@ -62,8 +78,7 @@
 
 	/**
 	 * @description remove item with Id
-	 * @param {number} id
-	 * @private
+	 * @param {number} id - id of the item
 	 * @method View._removeItem
 	 * @return {void}
 	 */
@@ -76,11 +91,10 @@
 	};
 
 	/**
-	 * @description clear Completed - updtade de display
+	 * @description clear Completed - update de display
 	 * @param {number} completedCount - number of todo as completed
 	 * @param {boolean} true is visible - false is not visible
 	 * @method View._clearCompletedButton
-	 * @private
 	 * @return {void}
 	 */
 	View.prototype._clearCompletedButton = function (completedCount, visible) {
@@ -91,7 +105,6 @@
 	/**
 	 * @description indicated current page
 	 * @param {string} currentPage - name of the current page
-	 * @private
 	 * @method View._setFilter
 	 * @return {void}
 	 */
@@ -104,8 +117,7 @@
 	 * @description update the view of the Todo if has completed
 	 * @param {number} id - id of the todo
 	 * @param {boolean} completed - todo is completed ?
-	 * @private
-	 * @method View_elementComplete
+	 * @method View._elementComplete
 	 * @return {void}
 	 */
 	View.prototype._elementComplete = function (id, completed) {
@@ -126,7 +138,6 @@
 	 * @description change a todo in edit mode
 	 * @param {number} id - id of the todo
 	 * @param {string} title - title of the todo
-	 * @private
 	 * @method View._editItem
 	 * @return {void}
 	 */
@@ -151,7 +162,6 @@
 	 * @description change a todo in display mode
 	 * @param {number} id - id of the todo
 	 * @param {string} title - title of the todo
-	 * @private
 	 * @method View._editItemDone
 	 * @return {void}
 	 */
@@ -223,7 +233,6 @@
 	/**
 	 * @description find the id of the item
 	 * @param {object} element - Dom Element
-	 * @private
 	 * @method View._itemId
 	 * @return {number} Id of the item
 	 */
@@ -235,7 +244,6 @@
 	/**
 	 * @description manages the end of the edition
 	 * @param {function} handler - callback
-	 * @private
 	 * @method View._bindItemEditDone
 	 * @return {void}
 	 */
@@ -263,7 +271,6 @@
 	/**
 	 * @description manages the cancel of the edition
 	 * @param {function} handler - callback
-	 * @private
 	 * @method View._bindItemEditCancel
 	 * @return {void}
 	 */
@@ -283,7 +290,7 @@
 	 * @description dispatch the event
 	 * @param {string }event - name of the event
 	 * @param {function} handler - callback
-	 * @method View._bindItemEditCancel
+	 * @method View.bind
 	 * @return {void}
 	 */
 	View.prototype.bind = function (event, handler) {
@@ -340,19 +347,21 @@
 
 
 
+    
+    
 </div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controller.html">Controller</a></li><li><a href="Model.html">Model</a></li><li><a href="Store.html">Store</a></li><li><a href="Template.html">Template</a></li><li><a href="Todo.html">Todo</a></li><li><a href="View.html">View</a></li><li><a href="window.html">window</a></li></ul>
-</nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Tue Aug 11 2020 15:40:27 GMT+0200 (GMT+02:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Aug 11 2020 17:02:00 GMT+0200 (GMT+02:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
 </body>
 </html>
