@@ -15,7 +15,6 @@
 	 * @param {object} template - template object
 	 * @constructor
 	 * @name View
-	 * @return {void}
 	 */
 	function View(template) {
 		this.template = template;

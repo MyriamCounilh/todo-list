@@ -9,7 +9,6 @@
 	 * @param {object} storage A reference to the client side storage class
 	 * @constructor
 	 * @name Model
-	 * @return {void}
 	 */
 	function Model(storage) {
 		this.storage = storage;

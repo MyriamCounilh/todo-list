@@ -9,7 +9,6 @@
 	 * @description Sets up a brand new Todo list.
 	 * @constructor Todo
 	 * @param {string} name The name of your new to do list
-	 * @return {void}
 	 */
 	function Todo(name) {
 		this.storage = new app.Store(name);

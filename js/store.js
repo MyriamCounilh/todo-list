@@ -13,7 +13,6 @@
 	 * @param {string} name - The name of our DB we want to use
 	 * @param {function} callback - Our fake DB uses callbacks because in real life you probably would be making AJAX calls
 	 * @constructor
-	 * @return {void}
 	 */
 	function Store(name, callback) {
 		callback = callback || function () {};

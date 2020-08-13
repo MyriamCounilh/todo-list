@@ -10,7 +10,6 @@
 	 * @param {object} view -  The view instance
 	 * @constructor
 	 * @name Controller
-	 * @return {void}
 	 */
 	function Controller(model, view) {
 		var self = this;

@@ -32,7 +32,6 @@
 	 * @description  up defaults for all the Template methods such as a default template
 	 * @name Template
 	 * @constructor
-	 * @return {void}
 	 */
 	function Template() {
 		this.defaultTemplate
